@@ -235,9 +235,9 @@ protocol and some of its key features, like:
 - HTTP Verbs
 - HTTP Status Codes
 
-In the coming lessons, we'll see how to use the Sinatra Java gem to help set up
-a server that lets us use these different features of HTTP in Java, as well as
-how the database comes into play when building our server.
+In the coming lessons, we'll see how to build a server that lets us use these
+different features of HTTP, as well as how the database comes into play when 
+building our server.
 
 ## Resources
 
