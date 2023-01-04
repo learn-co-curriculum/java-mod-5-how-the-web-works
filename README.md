@@ -1,11 +1,31 @@
-# How The Web Works
+# How the Web Works
 
 ## Learning Goals
 
-- Define a client and server
-- Define a static site vs. a dynamic site
-- Explain what an HTTP request is
-- Explain the nature of request and response
+- Describe the components of a web application framework.
+- Manipulate and test the structure of a request object.
+
+***
+
+## Key Vocab
+
+- **Web Framework**: software that is designed to support the development of
+  web applications. Web frameworks provide built-in tools for generating web
+  servers, turning Java objects into HTML, and more.
+- **Extension**: a package or module that adds functionality to an
+  application that it does not have by default.
+- **Request**: an attempt by one machine to contact another over the internet.
+- **Client**: an application or machine that accesses services being provided
+  by a server through the internet.
+- **Web Server**: a combination of software and hardware that uses Hypertext
+  Transfer Protocol (HTTP) and other protocols to respond to requests made
+  over the internet.
+- **Web Server Gateway Interface (WSGI)**: an interface between web servers
+  and applications.
+- **Template Engine**: software that takes in strings with tokenized
+  values, replacing the tokens with their values as output in a web browser.
+
+***
 
 ## Introduction
 
@@ -21,16 +41,16 @@ the web.
 
 So seriously, how does this:
 
-```txt
-https://github.com/learn-co-curriculum/phase-3-how-the-web-works-readme
+```text
+https://github.com/learn-co-curriculum/java-mod-5-how-the-web-works
 ```
 
 Turn into this:
 
-![Github Readme](https://curriculum-content.s3.amazonaws.com/phase-3/how-the-web-works-readme/github-readme.png)
+![Github Readme](https://curriculum-content.s3.amazonaws.com/6036/java-mod-5-servlets/github_screenshot.png)
 
 The internet operates based on conversations between the client (more familiarly
-known as the browser) and the server (the code running the web site you're
+known as the browser) and the server (the code running the website you're
 trying to load). By typing in that URL into your browser, you (the client) are
 _requesting_ a web page. The server then receives the request, processes it, and
 sends a _response_. Your browser receives that response and shows it to you.
@@ -78,8 +98,7 @@ responds with an HTTP response that all browsers are able to parse.
 
 HTTP is the "language" browsers speak. Every time you load a web page, you are
 making an HTTP **request** to the site's server, and the server sends back an
-HTTP **response**. When you use `fetch` in JavaScript, you are also making an
-HTTP request.
+HTTP **response**. 
 
 In the example above, the client is making an **HTTP GET request** to GitHub's
 server. GitHub's server then sends back a response and the client renders the
@@ -96,15 +115,15 @@ done through **Uniform Resource Locators**, or URLs. You may have also heard
 these addresses referred to as URIs (Uniform Resource Identifiers). Both are
 fine. Let's look at the URL we used up top:
 
-```txt
-https://github.com/learn-co-curriculum/phase-3-how-the-web-works-readme
+```text
+https://github.com/learn-co-curriculum/java-mod-5-how-the-web-works
 ```
 
 This URL is broken into three parts:
 
 - `https` - the protocol
 - `github.com` - the domain name
-- `/learn-co-curriculum/phase-3-how-the-web-works-readme` - the path
+- `/learn-co-curriculum/java-mod-5-how-the-web-works` - the path
 
 The **protocol** is the format we're using to send our request. There are
 several different types of internet protocols (SMTP for emails, HTTPS for secure
@@ -117,7 +136,7 @@ of the web server that hosts that particular website. This will be things like
 The **path** is the particular part of the website we want to load. GitHub has
 millions and millions of users and repositories, so we need to identify the
 specific resource we want using the path:
-`/learn-co-curriculum/phase-3-how-the-web-works-readme`.
+`/learn-co-curriculum/java-mod-5-how-the-web-works`.
 
 For an analogy for how a URL works, think about an apartment building. The
 **domain** is the entire building. Within that building, though, there are
@@ -138,9 +157,9 @@ action you would like the server to perform. We do this using
 [**HTTP Verbs**][verbs], also referred to as **request methods**. We can use the
 same path for multiple actions, so it is the **combination** of the path and the
 HTTP verb (method) that _fully_ describes the request. For example, making a
-**POST** request to `/learn-co-curriculum/phase-3-how-the-web-works-readme`
+**POST** request to `/learn-co-curriculum/java-mod-5-how-the-web-works`
 tells the server something different from making a **GET** request to
-`/learn-co-curriculum/phase-3-how-the-web-works-readme`.
+`/learn-co-curriculum/java-mod-5-how-the-web-works`.
 
 **GET** requests are the most common browser requests. This just means "hey
 server, please _GET_ me this resource", i.e., load this web page. Other verbs
@@ -163,7 +182,7 @@ is used for by convention. We will learn about them a bit later:
 ### Request Format
 
 Our client so far has made a request to GitHub's server. In this case, a GET
-request to `/learn-co-curriculum/phase-3-how-the-web-works-readme`. The server
+request to `/learn-co-curriculum/java-mod-5-how-the-web-works`. The server
 then responds with all the code associated with that resource (everything
 between `<!doctype html>` and `</html>`), including all images, CSS files,
 JavaScript files, videos, music, etc.
@@ -174,7 +193,7 @@ contain all the information the server needs in order to fulfill the request:
 the HTTP verb (method), the resource (path), and the domain (authority), as well
 as some other metadata. The request headers look something like this:
 
-![request headers](https://curriculum-content.s3.amazonaws.com/phase-3/how-the-web-works-readme/request-headers.png)
+![request headers](https://curriculum-content.s3.amazonaws.com/6036/java-mod-5-servlets/request_headers.png)
 
 ## Responses
 
@@ -185,7 +204,7 @@ the **body**.
 
 The server's **response headers** look something like this:
 
-![response headers](https://curriculum-content.s3.amazonaws.com/phase-3/how-the-web-works-readme/response-headers.png)
+![response headers](https://curriculum-content.s3.amazonaws.com/6036/java-mod-5-servlets/response_headers.png)
 
 The headers contain all of the metadata about the response. This includes things
 like `content-length` (how big is my response) and what the `content-type` of
